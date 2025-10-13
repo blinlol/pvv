@@ -1,4 +1,5 @@
 #include <vector>
+#include <algorithm>
 #include <iostream>
 #include "utils.cpp"
 
@@ -24,8 +25,8 @@ class Ellpack {
 
         ja = std::move(std::vector<int>(n * maxNeighbours));
 
-        // adjacenty matrix
-        std::vector<std::vector<bool>> adj(n, std::vector<bool>(n));
+        std::vector<std::vector<int>> adjList(n);
+
         {
         int M, Q, R;
 
@@ -37,19 +38,19 @@ class Ellpack {
 
                 // connect with down neighbour
                 if (Q < n) {
-                    adj[M][Q] = true;
-                    adj[Q][M] = true;
+                    adjList[M].push_back(Q);
+                    adjList[Q].push_back(M);
                 }
 
                 // connect with right neighbour
                 if (R < n && jm < nx ) { 
-                    adj[M][R] = true;
-                    adj[R][M] = true;                    
+                    adjList[M].push_back(R);
+                    adjList[R].push_back(M);
                 }
             }
         }
         }
-
+      
         {
         int it, jt, iq, jq, ir, jr, Q, R;
         for (int t=0; t < nx * ny; t++) {
@@ -59,27 +60,43 @@ class Ellpack {
                 jt = t % nx;
 
                 iq = it;
-                jq - jt + 1;
+                jq = jt + 1;
                 Q = imjmToM(iq, jq);
 
                 ir = it+1;
                 jr = jt;
                 R = imjmToM(ir, jr);
 
-                adj[Q][R] = true;
-                adj[R][Q] = true;
+                adjList[Q].push_back(R);
+                adjList[R].push_back(Q);
             }
         }
         }
 
         for (int d=0; d < n; d++){
-            adj[d][d] = true;
+            adjList[d].push_back(d);
         }
 
-
+        {
+        int last = 0;
+        int i;
+        for (int M=0; M < n; M++) {
+            std::sort(adjList[M].begin(), adjList[M].end());
+            for (i = 0; i < adjList[M].size(); i++) {
+                ja[last] = adjList[M][i];
+                last++;
+            }
+            for (; last < (M + 1) * maxNeighbours; last ++) {
+                ja[last] = adjList[M][i-1];
+            }
+        }
+        }
 
         if (DEBUG) {
-            printVector2D(adj);
+            std::cout << "adjList:\n";
+            printVector2D(adjList);
+            std::cout << "\nja:\n";
+            printVector1D(ja);
         }
     };
 };

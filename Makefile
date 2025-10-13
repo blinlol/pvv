@@ -1,5 +1,5 @@
 BIN_NAME=./a.out
-GENERATES=$(BIN_NAME)
+GENERATES=$(BIN_NAME) $(BIN_NAME)-debug
 
 INPUT=input
 
@@ -13,3 +13,6 @@ run: build
 
 clean:
 	rm -rf $(GENERATES)
+
+debug: main.cpp
+	g++ --std=c++11 -g -o0 -o $(BIN_NAME)-debug $^
