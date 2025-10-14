@@ -14,18 +14,8 @@ class Ellpack {
         return im * (nx+1) + jm;
     }
 
-    public:
-    // num nodes in graph
-    int n;
-
-    std::vector<int> ja;
-    std::vector<double> a;
-
-    Ellpack(int nx, int ny, int k1, int k2): nx(nx), ny(ny), k1(k1), k2(k2) {
-        n = (nx+1) * (ny+1);
-
-        ja = std::move(std::vector<int>(n * maxNeighbours));
-        a = std::move(std::vector<double>(ja.size()));
+    void createJa(){
+        MEASURE_FUNCTION
 
         std::vector<std::vector<int>> adjList(n);
 
@@ -100,9 +90,27 @@ class Ellpack {
             std::cout << "\nja:\n";
             printVector1D(ja);
         }
+    }
+
+    public:
+    // num nodes in graph
+    int n;
+
+    std::vector<int> ja;
+    std::vector<double> a;
+
+    Ellpack(int nx, int ny, int k1, int k2): nx(nx), ny(ny), k1(k1), k2(k2) {
+        n = (nx+1) * (ny+1);
+
+        ja = std::move(std::vector<int>(n * maxNeighbours));
+        a = std::move(std::vector<double>(ja.size()));
+
+        createJa();
     };
 
     void fill(){
+        MEASURE_FUNCTION
+
         for (int i=0; i < n; i++) {
             double nonDiagSum = 0;
             int diagj = -1;
