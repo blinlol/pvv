@@ -2,7 +2,7 @@
 #include <fstream>
 #include <string>
 #include <cstdlib>
-#include "generate.cpp"
+#include "ellpack.cpp"
 
 bool parseInput(int argc, char* argv[], int& nx, int& ny, int& k1, int& k2) {
     if (argc == 5) {
@@ -70,6 +70,8 @@ int main(int argc, char* argv[]) {
     setDebugFromEnv();
     
     auto graph = generate(nx, ny, k1, k2);
+
+    fill(graph);
     
     return 0;
 }

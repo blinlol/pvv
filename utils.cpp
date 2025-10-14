@@ -13,7 +13,7 @@ void printVector2D(const std::vector<std::vector<T>>& vec) {
     
     for (const auto& row : vec) {
         for (const auto& element : row) {
-            std::cout << element << " ";
+            std::cout << element << "\t";
         }
         std::cout << "\n";
     }
