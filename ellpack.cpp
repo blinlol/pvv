@@ -13,48 +13,55 @@ class Ellpack {
     }
 
     void createJa(){
-        MEASURE_FUNCTION
-
         std::vector<std::vector<int>> adjList(n);
 
-        { // iter over nodes, connect with down and right neighbours
-        int M, Q, R;
+        #pragma omp parallel 
+        { // start parallel
+        
+        // iter over nodes
+        #pragma omp for
         for (int im=0; im < ny + 1; im++) {
             for (int jm=0; jm < nx + 1; jm++) {
-                M = imjmToM(im, jm);
-                Q = imjmToM(im+1, jm);
-                R = imjmToM(im, jm + 1);
+                int M = imjmToM(im, jm);
 
-                // connect with down neighbour
-                if (Q < n) {
-                    adjList[M].push_back(Q);
-                    adjList[Q].push_back(M);
+                int Down = imjmToM(im+1, jm);
+                int Right = imjmToM(im, jm + 1);
+                int Left = imjmToM(im, jm - 1);
+                int Up = imjmToM(im - 1, jm);
+
+                if (Down < n) {
+                    adjList[M].push_back(Down);
                 }
 
-                // connect with right neighbour
-                if (R < n && jm < nx ) { 
-                    adjList[M].push_back(R);
-                    adjList[R].push_back(M);
+                if (Right < n && jm < nx ) { 
+                    adjList[M].push_back(Right);
+                }
+
+                if (Left >= 0 && jm > 0) {
+                    adjList[M].push_back(Left);
+                }
+
+                if (Up >= 0) {
+                    adjList[M].push_back(Up);
                 }
             }
         }
-        }
-      
+
+        #pragma omp master
         { // iter over cells, connect with diag
-        int it, jt, iq, jq, ir, jr, Q, R;
         for (int t=0; t < nx * ny; t++) {
             if (k1 <= t % (k1 + k2)) {
                 
-                it = t / nx;
-                jt = t % nx;
+                int it = t / nx;
+                int jt = t % nx;
 
-                iq = it;
-                jq = jt + 1;
-                Q = imjmToM(iq, jq);
+                int iq = it;
+                int jq = jt + 1;
+                int Q = imjmToM(iq, jq);
 
-                ir = it+1;
-                jr = jt;
-                R = imjmToM(ir, jr);
+                int ir = it+1;
+                int jr = jt;
+                int R = imjmToM(ir, jr);
 
                 adjList[Q].push_back(R);
                 adjList[R].push_back(Q);
@@ -62,15 +69,18 @@ class Ellpack {
         }
         }
 
+        
         // connect each node with itself
+        #pragma omp master
         for (int d=0; d < n; d++){
-            adjList[d].push_back(d);
+            adjList[d].push_back(d); ///
         }
 
+        #pragma omp master
         { // create ja from adjList
         int last = 0;
-        int i;
         for (int M=0; M < n; M++) {
+            int i;
             std::sort(adjList[M].begin(), adjList[M].end());
             for (i = 0; i < adjList[M].size(); i++) {
                 ja[last] = adjList[M][i];
@@ -81,6 +91,8 @@ class Ellpack {
             }
         }
         }
+
+        } // end parallel
 
         if (DEBUG) {
             std::cout << "adjList:\n";
@@ -98,6 +110,8 @@ class Ellpack {
     std::vector<double> a;
 
     Ellpack(int nx, int ny, int k1, int k2): nx(nx), ny(ny), k1(k1), k2(k2) {
+        MEASURE_FUNCTION
+
         n = (nx+1) * (ny+1);
 
         ja = std::move(std::vector<int>(n * maxNeighbours));
@@ -109,6 +123,7 @@ class Ellpack {
     void fill(){
         MEASURE_FUNCTION
 
+        // #pragma omp parallel for
         for (int i=0; i < n; i++) {
             double nonDiagSum = 0;
             int diagj = -1;

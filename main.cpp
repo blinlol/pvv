@@ -5,18 +5,20 @@
 #include <cerrno>
 #include <cstring>
 #include <climits>
+#include <omp.h>
 
 #include "ellpack.cpp"
 #include "solver.cpp"
 
-bool parseInput(int argc, char* argv[], int& nx, int& ny, int& k1, int& k2) {
-    if (argc == 5) {
+bool parseInput(int argc, char* argv[], int& nx, int& ny, int& k1, int& k2, int& t) {
+    if (argc == 6) {
         // Parse from command line arguments
         try {
             nx = std::stoi(argv[1]);
             ny = std::stoi(argv[2]);
             k1 = std::stoi(argv[3]);
             k2 = std::stoi(argv[4]);
+            t = std::stoi(argv[5]);
             return true;
         } catch (const std::exception& e) {
             std::cerr << "Error: Invalid command line arguments. Please provide integers only.\n";
@@ -31,7 +33,7 @@ bool parseInput(int argc, char* argv[], int& nx, int& ny, int& k1, int& k2) {
             return false;
         }
         
-        if (file >> nx >> ny >> k1 >> k2) {
+        if (file >> nx >> ny >> k1 >> k2 >> t) {
             file.close();
             return true;
         } else {
@@ -42,7 +44,7 @@ bool parseInput(int argc, char* argv[], int& nx, int& ny, int& k1, int& k2) {
     }
     else {
         std::cerr << "Usage:\n";
-        std::cerr << "  " << argv[0] << " nx ny k1 k2     (read from command line)\n";
+        std::cerr << "  " << argv[0] << " nx ny k1 k2 t   (read from command line)\n";
         std::cerr << "  " << argv[0] << " filename        (read from file)\n";
         return false;
     }
@@ -140,16 +142,18 @@ int getMaxItFromEnv() {
 }
 
 int main(int argc, char* argv[]) {
-    int nx, ny, k1, k2;
+    int nx, ny, k1, k2, t;
     
-    if (!parseInput(argc, argv, nx, ny, k1, k2)) {
+    if (!parseInput(argc, argv, nx, ny, k1, k2, t)) {
         return 1;
     }
     
-    if (nx <= 0 || ny <= 0 || k1 < 0 || k2 < 0) {
+    if (nx <= 0 || ny <= 0 || k1 < 0 || k2 < 0 || t < 0) {
         std::cerr << "Error: All values must be positive integers.\n";
         return 1;
     }
+
+    omp_set_num_threads(t);
 
     setDebugFromEnv();
 
