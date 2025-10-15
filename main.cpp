@@ -2,6 +2,9 @@
 #include <fstream>
 #include <string>
 #include <cstdlib>
+#include <cerrno>
+#include <cstring>
+#include <climits>
 
 #include "ellpack.cpp"
 #include "solver.cpp"
@@ -57,6 +60,85 @@ void setDebugFromEnv() {
     }
 }
 
+double getEpsFromEnv() {
+    const char* envValue = std::getenv("EPS");
+    double defaultEps = 0.01;
+    
+    if (envValue == nullptr) {
+        return defaultEps;
+    }
+    
+    try {
+        // Convert string to double
+        char* endPtr;
+        double eps = std::strtod(envValue, &endPtr);
+        
+        // Check if conversion was successful
+        if (endPtr == envValue || *endPtr != '\0') {
+            throw std::invalid_argument("Invalid numeric format");
+        }
+        
+        // Check for range errors
+        if (errno == ERANGE) {
+            throw std::out_of_range("Value out of range");
+        }
+        
+        std::cout << "Loaded EPS from environment: " << eps << std::endl;
+        return eps;
+    }
+    catch (const std::exception& e) {
+        std::cerr << "Error parsing " << "EPS" << "='" << envValue 
+                  << "': " << e.what() << std::endl;
+        throw e;
+    }
+}
+
+int getMaxItFromEnv() {
+    const char* envValue = std::getenv("MAXIT");
+    int defaultMaxit = 100;
+
+    if (envValue == nullptr) {
+        return defaultMaxit;
+    }
+    
+    try {
+        // Convert string to integer
+        char* endPtr;
+        errno = 0; // Reset errno before conversion
+        long longValue = std::strtol(envValue, &endPtr, 10);
+        
+        // Check if conversion was successful
+        if (endPtr == envValue) {
+            throw std::invalid_argument("No digits found");
+        }
+        
+        // Check if there are trailing characters
+        if (*endPtr != '\0') {
+            throw std::invalid_argument("Invalid characters in value");
+        }
+        
+        // Check for range errors
+        if (errno == ERANGE || longValue < INT_MIN || longValue > INT_MAX) {
+            throw std::out_of_range("Value out of integer range");
+        }
+        
+        int maxit = static_cast<int>(longValue);
+        
+        // Validate it's positive
+        if (maxit <= 0) {
+            throw std::invalid_argument("MAXIT must be positive");
+        }
+        
+        std::cout << "Loaded MAXIT from environment: " << maxit << std::endl;
+        return maxit;
+    }
+    catch (const std::exception& e) {
+        std::cerr << "Error parsing " << "MAXIT" << "='" << envValue 
+                  << "': " << e.what() << std::endl;
+        throw e;
+    }
+}
+
 int main(int argc, char* argv[]) {
     int nx, ny, k1, k2;
     
@@ -71,8 +153,8 @@ int main(int argc, char* argv[]) {
 
     setDebugFromEnv();
 
-    double eps = 0.01;
-    int maxit = 100;
+    double eps = getEpsFromEnv();
+    int maxit = getMaxItFromEnv();
     
     auto graph = generate(nx, ny, k1, k2);
 
