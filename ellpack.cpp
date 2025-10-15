@@ -2,9 +2,7 @@
 #include <algorithm>
 #include <iostream>
 #include <cmath>
-#include "utils.cpp"
-
-const int maxNeighbours = 7;
+#include "utils.h"
 
 class Ellpack {
     private:

@@ -3,10 +3,14 @@ GENERATES=$(BIN_NAME) $(BIN_NAME)-debug
 
 INPUT=input
 
+files=main.cpp utils.cpp
+flags=--std=c++11 -fopenmp
+debugFlags=$(flags) -g -o0
+
 all: build run
 
-build: main.cpp
-	g++ --std=c++11 -o $(BIN_NAME) $^
+build: $(files)
+	g++ $(flags) -o $(BIN_NAME) $^
 
 run: build
 	$(BIN_NAME) $(INPUT)
@@ -14,5 +18,5 @@ run: build
 clean:
 	rm -rf $(GENERATES)
 
-debug: main.cpp
-	g++ --std=c++11 -g -o0 -o $(BIN_NAME)-debug $^
+debug: $(files)
+	g++ $(debugFlags) -o $(BIN_NAME)-debug $^

@@ -2,7 +2,9 @@
 #include <fstream>
 #include <string>
 #include <cstdlib>
+
 #include "ellpack.cpp"
+#include "solver.cpp"
 
 bool parseInput(int argc, char* argv[], int& nx, int& ny, int& k1, int& k2) {
     if (argc == 5) {
@@ -68,10 +70,18 @@ int main(int argc, char* argv[]) {
     }
 
     setDebugFromEnv();
+
+    double eps = 0.01;
+    int maxit = 100;
     
     auto graph = generate(nx, ny, k1, k2);
 
-    fill(graph);
+    auto ab = fill(graph);
     
+    auto solution = solve(graph.n, graph.ja, ab.first, ab.second, eps, maxit);
+
+    if (DEBUG) {
+        std::cout << solution;
+    }
     return 0;
 }
