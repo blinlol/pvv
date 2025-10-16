@@ -1,4 +1,5 @@
 #include <vector>
+#include <fstream>
 
 extern bool DEBUG;
 extern int maxNeighbours;
@@ -62,3 +63,4 @@ public:
 
 // Macro for easy usage - automatically uses function name
 #define MEASURE_FUNCTION Timer timer(__func__);
+#define MEASURE_FUNCTION_NAME(name) Timer timer(name);

@@ -1,5 +1,5 @@
 BIN_NAME=./a.out
-GENERATES=$(BIN_NAME) $(BIN_NAME)-debug
+GENERATES=$(BIN_NAME) $(BIN_NAME)-debug solver
 
 INPUT=input
 
@@ -20,3 +20,16 @@ clean:
 
 debug: $(files)
 	g++ $(debugFlags) -o $(BIN_NAME)-debug $^
+
+solver: solver_test.cpp utils.cpp solver.cpp
+	g++ $(debugFlags) -o $@ $^
+
+solver-test: solver
+	./$^ $(INPUT)
+
+test: solver
+	@echo ===== one thread
+	./$^ 1 1 1 1 1
+	@echo ===== four threads
+	./$^ 1 1 1 1 4
+	@echo =====

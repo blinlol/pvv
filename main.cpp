@@ -7,6 +7,7 @@
 #include <climits>
 #include <omp.h>
 
+#include "utils.h"
 #include "ellpack.cpp"
 #include "solver.cpp"
 

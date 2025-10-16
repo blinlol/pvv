@@ -123,7 +123,7 @@ class Ellpack {
     void fill(){
         MEASURE_FUNCTION
 
-        // #pragma omp parallel for
+        #pragma omp parallel for
         for (int i=0; i < n; i++) {
             double nonDiagSum = 0;
             int diagj = -1;

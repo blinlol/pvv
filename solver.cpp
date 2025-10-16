@@ -3,6 +3,8 @@
 #include <iostream>
 #include "utils.h"
 
+#define SOLVER
+
 struct Solution {
     public:
     // solution vector
@@ -26,16 +28,21 @@ std::ostream& operator<<(std::ostream& os, const Solution& sol) {
 
 // y = A * x
 std::vector<double> spmv(std::vector<int>& JA, std::vector<double>& A, std::vector<double>& x) {
+    MEASURE_FUNCTION
+
     int N = JA.size() / maxNeighbours;
     std::vector<double> y(N);
 
+    #pragma omp parallel for
     for(int i=0; i<N; ++i){
         double sum = 0.0;
+        {
         for(int _j = i * maxNeighbours; _j<(i+1) * maxNeighbours; ++_j){
             if (_j != i * maxNeighbours && JA[_j] == JA[_j - 1]) {
                 break;
             }
             sum += A[_j] * x[JA[_j]];
+        }
         }
         y[i] = sum;
     }
@@ -44,8 +51,11 @@ std::vector<double> spmv(std::vector<int>& JA, std::vector<double>& A, std::vect
 }
 
 // y = D * x, where D is diagonal matrix
-std::vector<double> spmv(std::vector<double>& diag, std::vector<double>& x) {
+std::vector<double> spmvDiag(std::vector<double>& diag, std::vector<double>& x) {
+    MEASURE_FUNCTION
+
     std::vector<double> y(x.size());
+    #pragma omp parallel for
     for (int i=0; i<x.size(); i++) {
         y[i] = diag[i] * x[i];
     }
@@ -64,16 +74,25 @@ std::vector<double> reverseDiag(std::vector<double>& D) {
 
 // (a, b)
 double dot(std::vector<double>& a, std::vector<double>& b) {
+    MEASURE_FUNCTION
+
     double res=0;
+    #pragma omp reduction(+:res)
+    {
+    #pragma omp for
     for (int i=0; i<a.size(); i++) {
         res += a[i] * b[i];
+    }
     }
     return res;
 }
 
 // a*x+y
 std::vector<double> axpy(double a, std::vector<double>& x, std::vector<double>& y) {
+    MEASURE_FUNCTION
+
     std::vector<double> res(x.size());
+    #pragma omp parallel for
     for (int i=0; i<x.size(); i++) {
         res[i] = a * x[i] + y[i];
     }
@@ -87,8 +106,11 @@ double L2(std::vector<double>& x) {
 
 // res = |Ax - b|
 double calcRes(std::vector<int>& JA, std::vector<double>& A, std::vector<double>& x, std::vector<double>& b){
+    MEASURE_FUNCTION
+
     auto Ax = spmv(JA, A, x);
     std::vector<double> res(x.size());
+    #pragma omp parallel for
     for (int i=0; i<x.size(); i++) {
         res[i] = Ax[i] - b[i];
     }
@@ -123,8 +145,11 @@ Solution solve(int n, std::vector<int> JA, std::vector<double> A, std::vector<do
     x_prev = std::vector<double>(b.size());
 
     do {
+        {
+        MEASURE_FUNCTION_NAME("solve_loop")
+        
         k++;
-        auto z = spmv(reverseM, r_prev);
+        auto z = spmvDiag(reverseM, r_prev);
         ro_new = dot(r_prev, z);
         if (k == 1) {
             p_new = z;
@@ -145,8 +170,8 @@ Solution solve(int n, std::vector<int> JA, std::vector<double> A, std::vector<do
         x_prev = x_new;
         r_prev = r_new;
         ro_prev = ro_new;
-
+        }
     } while (ro_new > eps * eps && k < maxit);
 
     return Solution(x_new, k, calcRes(JA, A, x_new, b));
-} 
+}
