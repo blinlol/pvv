@@ -32,4 +32,6 @@ test: solver
 	./$^ 1 1 1 1 1
 	@echo ===== four threads
 	./$^ 1 1 1 1 4
+	@echo ===== eight threads
+	./$^ 1 1 1 1 8
 	@echo =====

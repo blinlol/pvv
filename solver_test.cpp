@@ -29,7 +29,8 @@ void test_spmv() {
         x[i] = i * i * 0.3242 + 12.234;
     }
 
-    auto res = spmv(graph.ja, graph.a, x);
+    std::vector<double> res(graph.ja.size() / maxNeighbours);
+    spmv(res, graph.ja, graph.a, x);
     std::cout << "spmv ";
     printVector1D(std::vector<double>(res.begin() + 1000, res.begin() + 1000 + 5));
 }
@@ -97,7 +98,7 @@ int main(int argc, char *argv[]) {
     
     omp_set_num_threads(t);
  
-    test_dot();
+    // test_dot();
     test_spmv();
     test_axpy();
 }
