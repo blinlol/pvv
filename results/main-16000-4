@@ -1,0 +1,80 @@
+Sender: LSF System <lsfadmin@polus-c3-ib.bmc.hpc.cs.msu.ru>
+Subject: Job 1339301: <source /polusfs/setenv/setup.SMPI;#BSUB -W 0:15;#BSUB -o results/main-16000-4;#BSUB -e results/main-16000-4;#BSUB -m "polus-c3-ib";#BSUB -R "affinity[core(20)]";OMP_NUM_THREADS=4 /polusfs/lsf/openmp/launchOpenMP.py ./main 16000 16000 2 3 4> in cluster <MSUCluster> Exited
+
+Job <source /polusfs/setenv/setup.SMPI;#BSUB -W 0:15;#BSUB -o results/main-16000-4;#BSUB -e results/main-16000-4;#BSUB -m "polus-c3-ib";#BSUB -R "affinity[core(20)]";OMP_NUM_THREADS=4 /polusfs/lsf/openmp/launchOpenMP.py ./main 16000 16000 2 3 4> was submitted from host <polus-ib.bmc.hpc.cs.msu.ru> by user <edu-cmc-pv25-528-01> in cluster <MSUCluster> at Sun Nov 16 13:55:58 2025
+Job was executed on host(s) <polus-c3-ib.bmc.hpc.cs.msu.ru>, in queue <short>, as user <edu-cmc-pv25-528-01> in cluster <MSUCluster> at Sun Nov 16 15:20:57 2025
+</home_edu/edu-cmc-pv25-528/edu-cmc-pv25-528-01> was used as the home directory.
+</home_edu/edu-cmc-pv25-528/edu-cmc-pv25-528-01/pvv> was used as the working directory.
+Started at Sun Nov 16 15:20:57 2025
+Terminated at Sun Nov 16 15:36:06 2025
+Results reported at Sun Nov 16 15:36:06 2025
+
+Your job looked like:
+
+------------------------------------------------------------
+# LSBATCH: User input
+source /polusfs/setenv/setup.SMPI
+#BSUB -W 0:15
+#BSUB -o results/main-16000-4
+#BSUB -e results/main-16000-4
+#BSUB -m "polus-c3-ib"
+#BSUB -R "affinity[core(20)]"
+OMP_NUM_THREADS=4 /polusfs/lsf/openmp/launchOpenMP.py ./main 16000 16000 2 3 4
+
+------------------------------------------------------------
+
+TERM_RUNLIMIT: job killed after reaching LSF run time limit.
+Exited with exit code 140.
+
+Resource usage summary:
+
+    CPU time :                                   1689.00 sec.
+    Max Memory :                                 91814 MB
+    Average Memory :                             48044.68 MB
+    Total Requested Memory :                     -
+    Delta Memory :                               -
+    Max Swap :                                   -
+    Max Processes :                              4
+    Max Threads :                                8
+    Run time :                                   909 sec.
+    Turnaround time :                            6008 sec.
+
+The output (if any) follows:
+
+⏱️  Ellpack executed in 651.127s
+⏱️  fill executed in 35.1643s
+⏱️  spmvDiag executed in 1.16448s
+⏱️  dot executed in 0.840494s
+⏱️  spmv executed in 13.5533s
+⏱️  dot executed in 0.839499s
+⏱️  axpy executed in 1.15422s
+⏱️  axpy executed in 1.15584s
+⏱️  spmv executed in 13.6169s
+⏱️  dot executed in 0.836844s
+⏱️  calcRes executed in 19.4334s
+#1: 4670.42
+⏱️  solve_loop executed in 38.1415s
+⏱️  spmvDiag executed in 1.14843s
+⏱️  dot executed in 0.838507s
+⏱️  axpy executed in 1.15232s
+⏱️  spmv executed in 13.6663s
+⏱️  dot executed in 0.844434s
+⏱️  axpy executed in 1.16426s
+⏱️  axpy executed in 1.16744s
+⏱️  spmv executed in 13.5727s
+⏱️  dot executed in 0.837792s
+⏱️  calcRes executed in 15.5622s
+#2: 1880.39
+⏱️  solve_loop executed in 35.5441s
+⏱️  spmvDiag executed in 1.17792s
+⏱️  dot executed in 0.838588s
+⏱️  axpy executed in 1.16083s
+⏱️  spmv executed in 13.6944s
+⏱️  dot executed in 0.846844s
+⏱️  axpy executed in 1.16419s
+⏱️  axpy executed in 1.16854s
+⏱️  spmv executed in 13.5805s
+⏱️  dot executed in 0.836946s
+⏱️  calcRes executed in 15.5692s
+#3: 767.274
+User defined signal 2
