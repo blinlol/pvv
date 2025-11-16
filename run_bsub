@@ -1,0 +1,44 @@
+#!/bin/bash
+
+# Создаем директорию для результатов если её нет
+mkdir -p results
+
+# Параметры перебора
+names=("main" "solver")
+Ns=(1000 2000 4000 8000 16000)
+ts=(1 2 4 8 16 32 64 128 160)
+
+# Читаем шаблон
+template=$(cat bsub_input)
+
+for name in "${names[@]}"; do
+    for N in "${Ns[@]}"; do
+        for t in "${ts[@]}"; do
+            # Создаем временный файл
+            tmp_file="tmp_input_${name}_${N}_${t}"
+            
+            # Заменяем строки в шаблоне и создаем временный файл
+            echo "$template" | \
+            sed "s|#BSUB -o %J|#BSUB -o results/${name}-${N}-${t}.%J|" | \
+            sed "s|#BSUB -e %J|#BSUB -e results/${name}-${N}-${t}.%J|" | \
+            sed "s|OMP_NUM_THREADS=1 /polusfs/lsf/openmp/launchOpenMP.py ./a.out input-1|OMP_NUM_THREADS=${t} /polusfs/lsf/openmp/launchOpenMP.py ./${name} ${N} ${N} 2 3 ${t}|" \
+            > "$tmp_file"
+            
+            echo "Запускается задача: $name с N=$N и t=$t"
+            
+            # Запускаем bsub с временным файлом
+            bsub < "$tmp_file"
+            
+            # Удаляем временный файл
+            rm "$tmp_file"
+            
+            echo "Задача отправлена, временный файл удален"
+            
+            # Небольшая пауза между задачами (опционально)
+            sleep 1
+        done
+    done
+done
+
+echo "Все задачи отправлены в очередь LSF"
+
