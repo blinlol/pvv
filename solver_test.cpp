@@ -7,8 +7,7 @@
 #include "solver.h"
 
 
-void test_dot() {
-    int n = 20000000;
+void test_dot(int n) {
     std::vector<double> a(n);
     std::vector<double> b(n);
     for (int i = 0; i<n; i++) {
@@ -18,8 +17,8 @@ void test_dot() {
     std::cout << "dot " << dot(a, b) << std::endl;
 }
 
-void test_spmv() {
-    int nx=5000, ny=5000, k1=7, k2=13;
+void test_spmv(int n) {
+    int nx=n, ny=n, k1=7, k2=13;
     
     auto graph = generate(nx, ny, k1, k2);
     graph.fill();
@@ -35,8 +34,7 @@ void test_spmv() {
     printVector1D(std::vector<double>(res.begin() + 1000, res.begin() + 1000 + 5));
 }
 
-void test_axpy() {
-    int n = 20000000;
+void test_axpy(int n) {
     double x = 1234.5678;
     std::vector<double> a(n);
     std::vector<double> b(n);
@@ -99,7 +97,7 @@ int main(int argc, char *argv[]) {
     
     omp_set_num_threads(t);
  
-    test_dot();
-    test_spmv();
-    test_axpy();
+    test_dot(nx);
+    test_spmv(nx);
+    test_axpy(nx);
 }
