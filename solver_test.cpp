@@ -44,7 +44,8 @@ void test_axpy() {
         a[i] = i * i * 0.3242 + 12.234;
         b[i] = i + (i - 213.434) * i;
     }
-    auto res = axpy(x, a, b);
+    std::vector<double> res(a.size());
+    axpy(res, x, a, b);
     std::cout << "axpy ";
     printVector1D(std::vector<double>(res.begin()+1000, res.begin() + 1000 + 5));
 }
@@ -98,7 +99,7 @@ int main(int argc, char *argv[]) {
     
     omp_set_num_threads(t);
  
-    // test_dot();
+    test_dot();
     test_spmv();
     test_axpy();
 }

@@ -4,9 +4,12 @@
 mkdir -p results
 
 # Параметры перебора
-names=("main" "solver")
-Ns=(1000 2000 4000 8000 16000)
-ts=(1 2 4 8 16 32 64 128 160)
+# names=("main" "solver")
+names=("main")
+# Ns=(1000 2000 4000 8000 16000)
+Ns=(2000 4000 8000 16000)
+# ts=(1 2 4 8 16 32 64 128 160)
+ts=(1 2 4 8 16 32 64)
 
 # Читаем шаблон
 template=$(cat bsub_input)
@@ -19,8 +22,8 @@ for name in "${names[@]}"; do
             
             # Заменяем строки в шаблоне и создаем временный файл
             echo "$template" | \
-            sed "s|#BSUB -o %J|#BSUB -o results/${name}-${N}-${t}.%J|" | \
-            sed "s|#BSUB -e %J|#BSUB -e results/${name}-${N}-${t}.%J|" | \
+            sed "s|#BSUB -o %J|#BSUB -o results/${name}-${N}-${t}|" | \
+            sed "s|#BSUB -e %J|#BSUB -e results/${name}-${N}-${t}|" | \
             sed "s|OMP_NUM_THREADS=1 /polusfs/lsf/openmp/launchOpenMP.py ./a.out input-1|OMP_NUM_THREADS=${t} /polusfs/lsf/openmp/launchOpenMP.py ./${name} ${N} ${N} 2 3 ${t}|" \
             > "$tmp_file"
             
@@ -41,4 +44,3 @@ for name in "${names[@]}"; do
 done
 
 echo "Все задачи отправлены в очередь LSF"
-

@@ -25,6 +25,6 @@ void spmv(std::vector<double>& res, std::vector<int>& JA, std::vector<double>& A
 double dot(std::vector<double>& a, std::vector<double>& b);
 
 // a*x+y
-voud axpy(std::vector<double> res, double a, std::vector<double>& x, std::vector<double>& y);
+void axpy(std::vector<double>& res, double a, std::vector<double>& x, std::vector<double>& y);
 
 #endif

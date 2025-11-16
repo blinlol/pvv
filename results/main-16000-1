@@ -1,0 +1,44 @@
+Sender: LSF System <lsfadmin@polus-c3-ib.bmc.hpc.cs.msu.ru>
+Subject: Job 1339299: <source /polusfs/setenv/setup.SMPI;#BSUB -W 0:15;#BSUB -o results/main-16000-1;#BSUB -e results/main-16000-1;#BSUB -m "polus-c3-ib";#BSUB -R "affinity[core(20)]";OMP_NUM_THREADS=1 /polusfs/lsf/openmp/launchOpenMP.py ./main 16000 16000 2 3 1> in cluster <MSUCluster> Exited
+
+Job <source /polusfs/setenv/setup.SMPI;#BSUB -W 0:15;#BSUB -o results/main-16000-1;#BSUB -e results/main-16000-1;#BSUB -m "polus-c3-ib";#BSUB -R "affinity[core(20)]";OMP_NUM_THREADS=1 /polusfs/lsf/openmp/launchOpenMP.py ./main 16000 16000 2 3 1> was submitted from host <polus-ib.bmc.hpc.cs.msu.ru> by user <edu-cmc-pv25-528-01> in cluster <MSUCluster> at Sun Nov 16 13:55:56 2025
+Job was executed on host(s) <polus-c3-ib.bmc.hpc.cs.msu.ru>, in queue <short>, as user <edu-cmc-pv25-528-01> in cluster <MSUCluster> at Sun Nov 16 14:50:51 2025
+</home_edu/edu-cmc-pv25-528/edu-cmc-pv25-528-01> was used as the home directory.
+</home_edu/edu-cmc-pv25-528/edu-cmc-pv25-528-01/pvv> was used as the working directory.
+Started at Sun Nov 16 14:50:51 2025
+Terminated at Sun Nov 16 15:05:54 2025
+Results reported at Sun Nov 16 15:05:54 2025
+
+Your job looked like:
+
+------------------------------------------------------------
+# LSBATCH: User input
+source /polusfs/setenv/setup.SMPI
+#BSUB -W 0:15
+#BSUB -o results/main-16000-1
+#BSUB -e results/main-16000-1
+#BSUB -m "polus-c3-ib"
+#BSUB -R "affinity[core(20)]"
+OMP_NUM_THREADS=1 /polusfs/lsf/openmp/launchOpenMP.py ./main 16000 16000 2 3 1
+
+------------------------------------------------------------
+
+TERM_RUNLIMIT: job killed after reaching LSF run time limit.
+Exited with exit code 140.
+
+Resource usage summary:
+
+    CPU time :                                   903.00 sec.
+    Max Memory :                                 38883 MB
+    Average Memory :                             34123.51 MB
+    Total Requested Memory :                     -
+    Delta Memory :                               -
+    Max Swap :                                   -
+    Max Processes :                              4
+    Max Threads :                                5
+    Run time :                                   904 sec.
+    Turnaround time :                            4198 sec.
+
+The output (if any) follows:
+
+User defined signal 2
