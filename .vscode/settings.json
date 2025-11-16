@@ -1,5 +1,6 @@
 {
     "files.associations": {
+        "*.dbclient-js": "javascript",
         "iostream": "cpp",
         "array": "cpp",
         "atomic": "cpp",
@@ -57,6 +58,11 @@
         "span": "cpp",
         "stop_token": "cpp",
         "thread": "cpp",
-        "variant": "cpp"
+        "variant": "cpp",
+        "cstring": "cpp",
+        "ranges": "cpp",
+        "cinttypes": "cpp",
+        "queue": "cpp",
+        "text_encoding": "cpp"
     }
 }

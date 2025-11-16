@@ -19,12 +19,12 @@ struct Solution {
 std::ostream& operator<<(std::ostream& os, const Solution& sol);
 
 // y = A * x
-std::vector<double> spmv(std::vector<int>& JA, std::vector<double>& A, std::vector<double>& x);
+void spmv(std::vector<double>& res, std::vector<int>& JA, std::vector<double>& A, std::vector<double>& x);
 
 // (a, b)
 double dot(std::vector<double>& a, std::vector<double>& b);
 
 // a*x+y
-std::vector<double> axpy(double a, std::vector<double>& x, std::vector<double>& y);
+voud axpy(std::vector<double> res, double a, std::vector<double>& x, std::vector<double>& y);
 
 #endif

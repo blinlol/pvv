@@ -27,11 +27,14 @@ std::ostream& operator<<(std::ostream& os, const Solution& sol) {
 }
 
 // y = A * x
-std::vector<double> spmv(std::vector<int>& JA, std::vector<double>& A, std::vector<double>& x) {
+void spmv(std::vector<double>& y, std::vector<int>& JA, std::vector<double>& A, std::vector<double>& x) {
     MEASURE_FUNCTION
 
     int N = JA.size() / maxNeighbours;
-    std::vector<double> y(N);
+
+    if (N != y.size()) {
+        throw "wrong y length";
+    }
 
     #pragma omp parallel for
     for(int i=0; i<N; ++i){
@@ -46,20 +49,20 @@ std::vector<double> spmv(std::vector<int>& JA, std::vector<double>& A, std::vect
         }
         y[i] = sum;
     }
-
-    return y;
 }
 
 // y = D * x, where D is diagonal matrix
-std::vector<double> spmvDiag(std::vector<double>& diag, std::vector<double>& x) {
+void spmvDiag(std::vector<double>& y, std::vector<double>& diag, std::vector<double>& x) {
     MEASURE_FUNCTION
 
-    std::vector<double> y(x.size());
+    if (y.size() != x.size()) {
+        throw "y.size() != x.size()";
+    }
+
     #pragma omp parallel for
     for (int i=0; i<x.size(); i++) {
         y[i] = diag[i] * x[i];
     }
-    return y;
 }
 
 // D^-1 as vector
@@ -77,26 +80,28 @@ double dot(std::vector<double>& a, std::vector<double>& b) {
     MEASURE_FUNCTION
 
     double res=0;
-    #pragma omp reduction(+:res)
-    {
-    #pragma omp for
-    for (int i=0; i<a.size(); i++) {
+    const int len = a.size();
+
+    #pragma omp parallel for reduction(+:res)
+    for (int i=0; i<len; i++) {
         res += a[i] * b[i];
     }
-    }
+
     return res;
 }
 
 // a*x+y
-std::vector<double> axpy(double a, std::vector<double>& x, std::vector<double>& y) {
+void axpy(std::vector<double>& res, double a, std::vector<double>& x, std::vector<double>& y) {
     MEASURE_FUNCTION
 
-    std::vector<double> res(x.size());
+    if (res.size() != x.size()) {
+        throw "res.size() != x.size()";
+    }
+
     #pragma omp parallel for
     for (int i=0; i<x.size(); i++) {
         res[i] = a * x[i] + y[i];
     }
-    return res;
 }
 
 // || x ||
@@ -108,8 +113,12 @@ double L2(std::vector<double>& x) {
 double calcRes(std::vector<int>& JA, std::vector<double>& A, std::vector<double>& x, std::vector<double>& b){
     MEASURE_FUNCTION
 
-    auto Ax = spmv(JA, A, x);
-    std::vector<double> res(x.size());
+    int N = JA.size() / maxNeighbours;
+
+    static std::vector<double> Ax(N);
+    spmv(Ax, JA, A, x);
+    static std::vector<double> res(x.size());
+
     #pragma omp parallel for
     for (int i=0; i<x.size(); i++) {
         res[i] = Ax[i] - b[i];
@@ -137,8 +146,13 @@ Solution solve(int n, std::vector<int> JA, std::vector<double> A, std::vector<do
     auto reverseM = reverseDiag(M);
 
 
-    std::vector<double> p_new, p_prev, x_prev, x_new, r_prev, r_new;
     double ro_prev, ro_new;
+
+    int N = JA.size() / maxNeighbours;
+    
+    std::vector<double> q(N), z(N);
+    std::vector<double> p_new(N), p_prev(N), tmp;
+    std::vector<double> x_new(N), r_new(N), x_prev(N), r_prev(N);
 
     int k = 0;
     r_prev = r_0;
@@ -149,26 +163,30 @@ Solution solve(int n, std::vector<int> JA, std::vector<double> A, std::vector<do
         MEASURE_FUNCTION_NAME("solve_loop")
         
         k++;
-        auto z = spmvDiag(reverseM, r_prev);
+        spmvDiag(z, reverseM, r_prev);
         ro_new = dot(r_prev, z);
         if (k == 1) {
-            p_new = z;
+            p_new.swap(z);
         } else {
             double beta = ro_new / ro_prev;
-            p_new = axpy(beta, p_prev, z);
+            axpy(p_new, beta, p_prev, z);
         }
-        auto q = spmv(JA, A, p_new);
+
+
+        spmv(q, JA, A, p_new);
+
         double alpha = ro_new / dot(p_new, q);
-        x_new = axpy(alpha, p_new, x_prev);
-        r_new = axpy(-alpha, q, r_prev);
+        axpy(x_new, alpha, p_new, x_prev);
+        axpy(r_new, -alpha, q, r_prev);
 
         auto res = calcRes(JA, A, x_new, b);
 
         std::cout << "#" << k << ": " << res << std::endl;
 
-        p_prev = p_new;
-        x_prev = x_new;
-        r_prev = r_new;
+        p_prev.swap(p_new);
+        x_prev.swap(x_new);
+        r_prev.swap(r_new);
+
         ro_prev = ro_new;
         }
     } while (ro_new > eps * eps && k < maxit);
