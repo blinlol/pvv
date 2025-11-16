@@ -8,7 +8,7 @@
 
 
 void test_dot() {
-    int n = 2000;
+    int n = 20000000;
     std::vector<double> a(n);
     std::vector<double> b(n);
     for (int i = 0; i<n; i++) {
@@ -19,7 +19,7 @@ void test_dot() {
 }
 
 void test_spmv() {
-    int nx=1000, ny=1000, k1=7, k2=13;
+    int nx=5000, ny=5000, k1=7, k2=13;
     
     auto graph = generate(nx, ny, k1, k2);
     graph.fill();
@@ -35,7 +35,7 @@ void test_spmv() {
 }
 
 void test_axpy() {
-    int n = 2000;
+    int n = 20000000;
     double x = 1234.5678;
     std::vector<double> a(n);
     std::vector<double> b(n);
