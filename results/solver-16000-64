@@ -1,0 +1,50 @@
+Sender: LSF System <lsfadmin@polus-c3-ib.bmc.hpc.cs.msu.ru>
+Subject: Job 1339410: <source /polusfs/setenv/setup.SMPI;#BSUB -W 0:15;#BSUB -o results/solver-16000-64;#BSUB -e results/solver-16000-64;#BSUB -m "polus-c3-ib";#BSUB -R "affinity[core(20)]";OMP_NUM_THREADS=64 /polusfs/lsf/openmp/launchOpenMP.py ./solver 16000 16000 2 3 64> in cluster <MSUCluster> Done
+
+Job <source /polusfs/setenv/setup.SMPI;#BSUB -W 0:15;#BSUB -o results/solver-16000-64;#BSUB -e results/solver-16000-64;#BSUB -m "polus-c3-ib";#BSUB -R "affinity[core(20)]";OMP_NUM_THREADS=64 /polusfs/lsf/openmp/launchOpenMP.py ./solver 16000 16000 2 3 64> was submitted from host <polus-ib.bmc.hpc.cs.msu.ru> by user <edu-cmc-pv25-528-01> in cluster <MSUCluster> at Sun Nov 16 16:34:01 2025
+Job was executed on host(s) <polus-c3-ib.bmc.hpc.cs.msu.ru>, in queue <short>, as user <edu-cmc-pv25-528-01> in cluster <MSUCluster> at Sun Nov 16 18:49:11 2025
+</home_edu/edu-cmc-pv25-528/edu-cmc-pv25-528-01> was used as the home directory.
+</home_edu/edu-cmc-pv25-528/edu-cmc-pv25-528-01/pvv> was used as the working directory.
+Started at Sun Nov 16 18:49:11 2025
+Terminated at Sun Nov 16 18:59:00 2025
+Results reported at Sun Nov 16 18:59:00 2025
+
+Your job looked like:
+
+------------------------------------------------------------
+# LSBATCH: User input
+source /polusfs/setenv/setup.SMPI
+#BSUB -W 0:15
+#BSUB -o results/solver-16000-64
+#BSUB -e results/solver-16000-64
+#BSUB -m "polus-c3-ib"
+#BSUB -R "affinity[core(20)]"
+OMP_NUM_THREADS=64 /polusfs/lsf/openmp/launchOpenMP.py ./solver 16000 16000 2 3 64
+
+------------------------------------------------------------
+
+Successfully completed.
+
+Resource usage summary:
+
+    CPU time :                                   1562.68 sec.
+    Max Memory :                                 45796 MB
+    Average Memory :                             41394.46 MB
+    Total Requested Memory :                     -
+    Delta Memory :                               -
+    Max Swap :                                   -
+    Max Processes :                              4
+    Max Threads :                                68
+    Run time :                                   589 sec.
+    Turnaround time :                            8699 sec.
+
+The output (if any) follows:
+
+dot ⏱️  dot executed in 0.00406149s
+6.68508e+19
+⏱️  Ellpack executed in 570.296s
+⏱️  fill executed in 4.08565s
+⏱️  spmv executed in 1.84901s
+spmv 1.03574e+08 -8.63487e+07 -3.14824e+07 -6.25736e+07 -1.18926e+06 
+⏱️  axpy executed in 9.79006e-05s
+axpy 4.0105e+08 4.01852e+08 4.02656e+08 4.0346e+08 4.04265e+08 
