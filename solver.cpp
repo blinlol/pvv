@@ -160,8 +160,9 @@ Solution solve(int n, std::vector<int> JA, std::vector<double> A, std::vector<do
 
     do {
         {
-        MEASURE_FUNCTION_NAME("solve_loop")
-        
+        MEASURE_FUNCTION_NAME("solve_loop_with_calcRes")
+        {
+        MEASURE_FUNCTION_NAME("one_solve")
         k++;
         spmvDiag(z, reverseM, r_prev);
         ro_new = dot(r_prev, z);
@@ -178,6 +179,7 @@ Solution solve(int n, std::vector<int> JA, std::vector<double> A, std::vector<do
         double alpha = ro_new / dot(p_new, q);
         axpy(x_new, alpha, p_new, x_prev);
         axpy(r_new, -alpha, q, r_prev);
+        }  
 
         auto res = calcRes(JA, A, x_new, b);
 
