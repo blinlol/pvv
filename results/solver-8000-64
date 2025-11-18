@@ -1,13 +1,13 @@
 Sender: LSF System <lsfadmin@polus-c3-ib.bmc.hpc.cs.msu.ru>
-Subject: Job 1339401: <source /polusfs/setenv/setup.SMPI;#BSUB -W 0:15;#BSUB -o results/solver-8000-64;#BSUB -e results/solver-8000-64;#BSUB -m "polus-c3-ib";#BSUB -R "affinity[core(20)]";OMP_NUM_THREADS=64 /polusfs/lsf/openmp/launchOpenMP.py ./solver 8000 8000 2 3 64> in cluster <MSUCluster> Done
+Subject: Job 1341029: <source /polusfs/setenv/setup.SMPI;#BSUB -W 0:15;#BSUB -o results/solver-8000-64;#BSUB -e results/solver-8000-64;#BSUB -m "polus-c3-ib";#BSUB -R "affinity[core(20)]";OMP_NUM_THREADS=64 /polusfs/lsf/openmp/launchOpenMP.py ./solver 8000 8000 2 3 64> in cluster <MSUCluster> Done
 
-Job <source /polusfs/setenv/setup.SMPI;#BSUB -W 0:15;#BSUB -o results/solver-8000-64;#BSUB -e results/solver-8000-64;#BSUB -m "polus-c3-ib";#BSUB -R "affinity[core(20)]";OMP_NUM_THREADS=64 /polusfs/lsf/openmp/launchOpenMP.py ./solver 8000 8000 2 3 64> was submitted from host <polus-ib.bmc.hpc.cs.msu.ru> by user <edu-cmc-pv25-528-01> in cluster <MSUCluster> at Sun Nov 16 16:33:52 2025
-Job was executed on host(s) <polus-c3-ib.bmc.hpc.cs.msu.ru>, in queue <short>, as user <edu-cmc-pv25-528-01> in cluster <MSUCluster> at Sun Nov 16 17:29:51 2025
+Job <source /polusfs/setenv/setup.SMPI;#BSUB -W 0:15;#BSUB -o results/solver-8000-64;#BSUB -e results/solver-8000-64;#BSUB -m "polus-c3-ib";#BSUB -R "affinity[core(20)]";OMP_NUM_THREADS=64 /polusfs/lsf/openmp/launchOpenMP.py ./solver 8000 8000 2 3 64> was submitted from host <polus-ib.bmc.hpc.cs.msu.ru> by user <edu-cmc-pv25-528-01> in cluster <MSUCluster> at Tue Nov 18 08:36:06 2025
+Job was executed on host(s) <polus-c3-ib.bmc.hpc.cs.msu.ru>, in queue <short>, as user <edu-cmc-pv25-528-01> in cluster <MSUCluster> at Tue Nov 18 09:03:22 2025
 </home_edu/edu-cmc-pv25-528/edu-cmc-pv25-528-01> was used as the home directory.
 </home_edu/edu-cmc-pv25-528/edu-cmc-pv25-528-01/pvv> was used as the working directory.
-Started at Sun Nov 16 17:29:51 2025
-Terminated at Sun Nov 16 17:32:18 2025
-Results reported at Sun Nov 16 17:32:18 2025
+Started at Tue Nov 18 09:03:22 2025
+Terminated at Tue Nov 18 09:05:49 2025
+Results reported at Tue Nov 18 09:05:49 2025
 
 Your job looked like:
 
@@ -27,156 +27,20 @@ Successfully completed.
 
 Resource usage summary:
 
-    CPU time :                                   389.28 sec.
-    Max Memory :                                 11459 MB
-    Average Memory :                             10192.96 MB
+    CPU time :                                   390.68 sec.
+    Max Memory :                                 11458 MB
+    Average Memory :                             10380.83 MB
     Total Requested Memory :                     -
     Delta Memory :                               -
     Max Swap :                                   -
     Max Processes :                              4
     Max Threads :                                68
     Run time :                                   147 sec.
-    Turnaround time :                            3506 sec.
+    Turnaround time :                            1783 sec.
 
 The output (if any) follows:
 
-dot ⏱️  dot executed in 0.00121491s
-2.05351e+18
-⏱️  Ellpack executed in 142.427s
-⏱️  fill executed in 1.01416s
-⏱️  spmv executed in 0.461768s
+⏱️  Ellpack executed in 142.945s
+⏱️  fill executed in 1.01137s
+⏱️  spmv executed in 0.461828s
 spmv 1.12913e+07 -2.50147e+07 2.59717e+07 1.7755e+07 2.67331e+07 
-⏱️  axpy executed in 0.000431851s
-axpy 4.0105e+08 4.01852e+08 4.02656e+08 4.0346e+08 4.04265e+08 
-Sender: LSF System <lsfadmin@polus-c3-ib.bmc.hpc.cs.msu.ru>
-Subject: Job 1340602: <source /polusfs/setenv/setup.SMPI;#BSUB -W 0:15;#BSUB -o results/solver-8000-64;#BSUB -e results/solver-8000-64;#BSUB -m "polus-c3-ib";#BSUB -R "affinity[core(20)]";OMP_NUM_THREADS=64 /polusfs/lsf/openmp/launchOpenMP.py ./solver 8000 8000 2 3 64> in cluster <MSUCluster> Done
-
-Job <source /polusfs/setenv/setup.SMPI;#BSUB -W 0:15;#BSUB -o results/solver-8000-64;#BSUB -e results/solver-8000-64;#BSUB -m "polus-c3-ib";#BSUB -R "affinity[core(20)]";OMP_NUM_THREADS=64 /polusfs/lsf/openmp/launchOpenMP.py ./solver 8000 8000 2 3 64> was submitted from host <polus-ib.bmc.hpc.cs.msu.ru> by user <edu-cmc-pv25-528-01> in cluster <MSUCluster> at Mon Nov 17 18:59:36 2025
-Job was executed on host(s) <polus-c3-ib.bmc.hpc.cs.msu.ru>, in queue <short>, as user <edu-cmc-pv25-528-01> in cluster <MSUCluster> at Mon Nov 17 18:59:37 2025
-</home_edu/edu-cmc-pv25-528/edu-cmc-pv25-528-01> was used as the home directory.
-</home_edu/edu-cmc-pv25-528/edu-cmc-pv25-528-01/pvv> was used as the working directory.
-Started at Mon Nov 17 18:59:37 2025
-Terminated at Mon Nov 17 18:59:37 2025
-Results reported at Mon Nov 17 18:59:37 2025
-
-Your job looked like:
-
-------------------------------------------------------------
-# LSBATCH: User input
-source /polusfs/setenv/setup.SMPI
-#BSUB -W 0:15
-#BSUB -o results/solver-8000-64
-#BSUB -e results/solver-8000-64
-#BSUB -m "polus-c3-ib"
-#BSUB -R "affinity[core(20)]"
-OMP_NUM_THREADS=64 /polusfs/lsf/openmp/launchOpenMP.py ./solver 8000 8000 2 3 64
-
-------------------------------------------------------------
-
-Successfully completed.
-
-Resource usage summary:
-
-    CPU time :                                   0.09 sec.
-    Max Memory :                                 1 MB
-    Average Memory :                             1.00 MB
-    Total Requested Memory :                     -
-    Delta Memory :                               -
-    Max Swap :                                   -
-    Max Processes :                              1
-    Max Threads :                                1
-    Run time :                                   0 sec.
-    Turnaround time :                            1 sec.
-
-The output (if any) follows:
-
-⏱️  axpy executed in 0.00151573s
-axpy 4.0105e+08 4.01852e+08 4.02656e+08 4.0346e+08 4.04265e+08 
-Sender: LSF System <lsfadmin@polus-c3-ib.bmc.hpc.cs.msu.ru>
-Subject: Job 1340772: <source /polusfs/setenv/setup.SMPI;#BSUB -W 0:15;#BSUB -o results/solver-8000-64;#BSUB -e results/solver-8000-64;#BSUB -m "polus-c3-ib";#BSUB -R "affinity[core(20)]";OMP_NUM_THREADS=64 /polusfs/lsf/openmp/launchOpenMP.py ./solver 8000 8000 2 3 64> in cluster <MSUCluster> Done
-
-Job <source /polusfs/setenv/setup.SMPI;#BSUB -W 0:15;#BSUB -o results/solver-8000-64;#BSUB -e results/solver-8000-64;#BSUB -m "polus-c3-ib";#BSUB -R "affinity[core(20)]";OMP_NUM_THREADS=64 /polusfs/lsf/openmp/launchOpenMP.py ./solver 8000 8000 2 3 64> was submitted from host <polus-ib.bmc.hpc.cs.msu.ru> by user <edu-cmc-pv25-528-01> in cluster <MSUCluster> at Mon Nov 17 23:08:14 2025
-Job was executed on host(s) <polus-c3-ib.bmc.hpc.cs.msu.ru>, in queue <short>, as user <edu-cmc-pv25-528-01> in cluster <MSUCluster> at Mon Nov 17 23:08:15 2025
-</home_edu/edu-cmc-pv25-528/edu-cmc-pv25-528-01> was used as the home directory.
-</home_edu/edu-cmc-pv25-528/edu-cmc-pv25-528-01/pvv> was used as the working directory.
-Started at Mon Nov 17 23:08:15 2025
-Terminated at Mon Nov 17 23:08:15 2025
-Results reported at Mon Nov 17 23:08:15 2025
-
-Your job looked like:
-
-------------------------------------------------------------
-# LSBATCH: User input
-source /polusfs/setenv/setup.SMPI
-#BSUB -W 0:15
-#BSUB -o results/solver-8000-64
-#BSUB -e results/solver-8000-64
-#BSUB -m "polus-c3-ib"
-#BSUB -R "affinity[core(20)]"
-OMP_NUM_THREADS=64 /polusfs/lsf/openmp/launchOpenMP.py ./solver 8000 8000 2 3 64
-
-------------------------------------------------------------
-
-Successfully completed.
-
-Resource usage summary:
-
-    CPU time :                                   0.07 sec.
-    Max Memory :                                 1 MB
-    Average Memory :                             1.00 MB
-    Total Requested Memory :                     -
-    Delta Memory :                               -
-    Max Swap :                                   -
-    Max Processes :                              1
-    Max Threads :                                1
-    Run time :                                   0 sec.
-    Turnaround time :                            1 sec.
-
-The output (if any) follows:
-
-⏱️  axpy executed in 0.00117873s
-axpy 4.0105e+08 4.01852e+08 4.02656e+08 4.0346e+08 4.04265e+08 
-Sender: LSF System <lsfadmin@polus-c3-ib.bmc.hpc.cs.msu.ru>
-Subject: Job 1340836: <source /polusfs/setenv/setup.SMPI;#BSUB -W 0:15;#BSUB -o results/solver-8000-64;#BSUB -e results/solver-8000-64;#BSUB -m "polus-c3-ib";#BSUB -R "affinity[core(20)]";OMP_NUM_THREADS=64 /polusfs/lsf/openmp/launchOpenMP.py ./solver 8000 8000 2 3 64> in cluster <MSUCluster> Done
-
-Job <source /polusfs/setenv/setup.SMPI;#BSUB -W 0:15;#BSUB -o results/solver-8000-64;#BSUB -e results/solver-8000-64;#BSUB -m "polus-c3-ib";#BSUB -R "affinity[core(20)]";OMP_NUM_THREADS=64 /polusfs/lsf/openmp/launchOpenMP.py ./solver 8000 8000 2 3 64> was submitted from host <polus-ib.bmc.hpc.cs.msu.ru> by user <edu-cmc-pv25-528-01> in cluster <MSUCluster> at Mon Nov 17 23:10:11 2025
-Job was executed on host(s) <polus-c3-ib.bmc.hpc.cs.msu.ru>, in queue <short>, as user <edu-cmc-pv25-528-01> in cluster <MSUCluster> at Mon Nov 17 23:10:21 2025
-</home_edu/edu-cmc-pv25-528/edu-cmc-pv25-528-01> was used as the home directory.
-</home_edu/edu-cmc-pv25-528/edu-cmc-pv25-528-01/pvv> was used as the working directory.
-Started at Mon Nov 17 23:10:21 2025
-Terminated at Mon Nov 17 23:10:21 2025
-Results reported at Mon Nov 17 23:10:21 2025
-
-Your job looked like:
-
-------------------------------------------------------------
-# LSBATCH: User input
-source /polusfs/setenv/setup.SMPI
-#BSUB -W 0:15
-#BSUB -o results/solver-8000-64
-#BSUB -e results/solver-8000-64
-#BSUB -m "polus-c3-ib"
-#BSUB -R "affinity[core(20)]"
-OMP_NUM_THREADS=64 /polusfs/lsf/openmp/launchOpenMP.py ./solver 8000 8000 2 3 64
-
-------------------------------------------------------------
-
-Successfully completed.
-
-Resource usage summary:
-
-    CPU time :                                   0.07 sec.
-    Max Memory :                                 1 MB
-    Average Memory :                             1.00 MB
-    Total Requested Memory :                     -
-    Delta Memory :                               -
-    Max Swap :                                   -
-    Max Processes :                              1
-    Max Threads :                                1
-    Run time :                                   0 sec.
-    Turnaround time :                            10 sec.
-
-The output (if any) follows:
-
-dot ⏱️  dot executed in 0.00136355s
-2.05351e+18
