@@ -7,45 +7,24 @@
 #include "solver.h"
 
 
-void test_dot(int n) {
+void test_dot(int n, int iter) {
     std::vector<double> a(n);
     std::vector<double> b(n);
     for (int i = 0; i<n; i++) {
         a[i] = i * i * 0.3242 + 12.234;
         b[i] = i + (i - 213.434) * i;
     }
-    std::cout << "dot " << dot(a, b) << std::endl;
-}
-
-void test_spmv(int n) {
-    int nx=n, ny=n, k1=7, k2=13;
-    
-    auto graph = generate(nx, ny, k1, k2);
-    graph.fill();
-
-    std::vector<double> x(graph.n);
-    for (int i = 0; i<x.size(); i++) {
-        x[i] = i * i * 0.3242 + 12.234;
+    double res = 0.0, start, end;
+    {
+    MEASURE_FUNCTION_NAME("dot full time")
+    start = omp_get_wtime();
+    for (int it=0; it<iter; it++) {
+        res = dot(a, b);
     }
-
-    std::vector<double> res(graph.ja.size() / maxNeighbours);
-    spmv(res, graph.ja, graph.a, x);
-    std::cout << "spmv ";
-    printVector1D(std::vector<double>(res.begin() + 1000, res.begin() + 1000 + 5));
-}
-
-void test_axpy(int n) {
-    double x = 1234.5678;
-    std::vector<double> a(n);
-    std::vector<double> b(n);
-    for (int i = 0; i<n; i++) {
-        a[i] = i * i * 0.3242 + 12.234;
-        b[i] = i + (i - 213.434) * i;
+    end = omp_get_wtime();
     }
-    std::vector<double> res(a.size());
-    axpy(res, x, a, b);
-    std::cout << "axpy ";
-    printVector1D(std::vector<double>(res.begin()+1000, res.begin() + 1000 + 5));
+    std::cout << "dot avg time " << (end - start) / iter << std::endl;
+    std::cout << "dot " << res << std::endl;
 }
 
 bool parseInput(int argc, char* argv[], int& nx, int& ny, int& k1, int& k2, int& t) {
@@ -96,8 +75,8 @@ int main(int argc, char *argv[]) {
     }
     
     omp_set_num_threads(t);
- 
-    test_dot(nx);
-    test_spmv(nx);
-    test_axpy(nx);
+
+    const int iter = 1000;
+
+    test_dot(nx, iter);
 }

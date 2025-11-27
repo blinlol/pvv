@@ -21,10 +21,16 @@ clean:
 debug: $(files)
 	g++ $(debugFlags) -o $(BIN_NAME)-debug $^
 
-solver: solver_test.cpp utils.cpp solver.cpp
+solver_dot: solver_dot.cpp utils.cpp solver.cpp
 	g++ $(debugFlags) -o $@ $^
 
-solver-test: solver
+solver_spmv: solver_spmv.cpp utils.cpp solver.cpp
+	g++ $(debugFlags) -o $@ $^
+
+solver_axpy: solver_axpy.cpp utils.cpp solver.cpp
+	g++ $(debugFlags) -o $@ $^
+
+solver-test: solver_dot solver_spmv solver_axpy
 	./$^ $(INPUT)
 
 test: solver
