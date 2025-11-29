@@ -1,0 +1,65 @@
+Sender: LSF System <lsfadmin@polus-c3-ib.bmc.hpc.cs.msu.ru>
+Subject: Job 1366637: <source /polusfs/setenv/setup.SMPI;#BSUB -W 0:15;#BSUB -o results/solver_axpy-400000000-128;#BSUB -e results/solver_axpy-400000000-128;#BSUB -m "polus-c3-ib";#BSUB -R "affinity[core(20)]";OMP_NUM_THREADS=128 /polusfs/lsf/openmp/launchOpenMP.py ./solver_axpy 400000000 400000000 2 3 128> in cluster <MSUCluster> Done
+
+Job <source /polusfs/setenv/setup.SMPI;#BSUB -W 0:15;#BSUB -o results/solver_axpy-400000000-128;#BSUB -e results/solver_axpy-400000000-128;#BSUB -m "polus-c3-ib";#BSUB -R "affinity[core(20)]";OMP_NUM_THREADS=128 /polusfs/lsf/openmp/launchOpenMP.py ./solver_axpy 400000000 400000000 2 3 128> was submitted from host <polus-ib.bmc.hpc.cs.msu.ru> by user <edu-cmc-pv25-528-01> in cluster <MSUCluster> at Fri Nov 28 11:54:31 2025
+Job was executed on host(s) <polus-c3-ib.bmc.hpc.cs.msu.ru>, in queue <short>, as user <edu-cmc-pv25-528-01> in cluster <MSUCluster> at Sat Nov 29 04:43:16 2025
+</home_edu/edu-cmc-pv25-528/edu-cmc-pv25-528-01> was used as the home directory.
+</home_edu/edu-cmc-pv25-528/edu-cmc-pv25-528-01/pvv/omp> was used as the working directory.
+Started at Sat Nov 29 04:43:16 2025
+Terminated at Sat Nov 29 04:43:35 2025
+Results reported at Sat Nov 29 04:43:35 2025
+
+Your job looked like:
+
+------------------------------------------------------------
+# LSBATCH: User input
+source /polusfs/setenv/setup.SMPI
+#BSUB -W 0:15
+#BSUB -o results/solver_axpy-400000000-128
+#BSUB -e results/solver_axpy-400000000-128
+#BSUB -m "polus-c3-ib"
+#BSUB -R "affinity[core(20)]"
+OMP_NUM_THREADS=128 /polusfs/lsf/openmp/launchOpenMP.py ./solver_axpy 400000000 400000000 2 3 128
+
+------------------------------------------------------------
+
+Successfully completed.
+
+Resource usage summary:
+
+    CPU time :                                   462.26 sec.
+    Max Memory :                                 9168 MB
+    Average Memory :                             6722.80 MB
+    Total Requested Memory :                     -
+    Delta Memory :                               -
+    Max Swap :                                   -
+    Max Processes :                              4
+    Max Threads :                                132
+    Run time :                                   19 sec.
+    Turnaround time :                            60544 sec.
+
+The output (if any) follows:
+
+⏱️  axpy executed in 0.201534s
+⏱️  axpy executed in 0.19776s
+⏱️  axpy executed in 0.197535s
+⏱️  axpy executed in 0.197429s
+⏱️  axpy executed in 0.19741s
+⏱️  axpy executed in 0.197598s
+⏱️  axpy executed in 0.197713s
+⏱️  axpy executed in 0.198011s
+⏱️  axpy executed in 0.197852s
+⏱️  axpy executed in 0.19819s
+⏱️  axpy executed in 0.197383s
+⏱️  axpy executed in 0.198036s
+⏱️  axpy executed in 0.19751s
+⏱️  axpy executed in 0.197973s
+⏱️  axpy executed in 0.197601s
+⏱️  axpy executed in 0.197696s
+⏱️  axpy executed in 0.197077s
+⏱️  axpy executed in 0.197448s
+⏱️  axpy executed in 0.197222s
+⏱️  axpy executed in 0.197562s
+⏱️  axpy full time executed in 3.95743s
+axpy avg time 0.197871
+axpy 1.25279e+06

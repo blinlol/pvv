@@ -1,4 +1,4 @@
-BIN_NAME=./a.out
+BIN_NAME=./main
 GENERATES=$(BIN_NAME) $(BIN_NAME)-debug solver
 
 INPUT?=input

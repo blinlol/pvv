@@ -1,0 +1,65 @@
+Sender: LSF System <lsfadmin@polus-c3-ib.bmc.hpc.cs.msu.ru>
+Subject: Job 1366441: <source /polusfs/setenv/setup.SMPI;#BSUB -W 0:15;#BSUB -o results/solver_dot-400000000-4;#BSUB -e results/solver_dot-400000000-4;#BSUB -m "polus-c3-ib";#BSUB -R "affinity[core(20)]";OMP_NUM_THREADS=4 /polusfs/lsf/openmp/launchOpenMP.py ./solver_dot 400000000 400000000 2 3 4> in cluster <MSUCluster> Done
+
+Job <source /polusfs/setenv/setup.SMPI;#BSUB -W 0:15;#BSUB -o results/solver_dot-400000000-4;#BSUB -e results/solver_dot-400000000-4;#BSUB -m "polus-c3-ib";#BSUB -R "affinity[core(20)]";OMP_NUM_THREADS=4 /polusfs/lsf/openmp/launchOpenMP.py ./solver_dot 400000000 400000000 2 3 4> was submitted from host <polus-ib.bmc.hpc.cs.msu.ru> by user <edu-cmc-pv25-528-01> in cluster <MSUCluster> at Fri Nov 28 11:26:23 2025
+Job was executed on host(s) <polus-c3-ib.bmc.hpc.cs.msu.ru>, in queue <short>, as user <edu-cmc-pv25-528-01> in cluster <MSUCluster> at Fri Nov 28 13:07:24 2025
+</home_edu/edu-cmc-pv25-528/edu-cmc-pv25-528-01> was used as the home directory.
+</home_edu/edu-cmc-pv25-528/edu-cmc-pv25-528-01/pvv/omp> was used as the working directory.
+Started at Fri Nov 28 13:07:24 2025
+Terminated at Fri Nov 28 13:08:02 2025
+Results reported at Fri Nov 28 13:08:02 2025
+
+Your job looked like:
+
+------------------------------------------------------------
+# LSBATCH: User input
+source /polusfs/setenv/setup.SMPI
+#BSUB -W 0:15
+#BSUB -o results/solver_dot-400000000-4
+#BSUB -e results/solver_dot-400000000-4
+#BSUB -m "polus-c3-ib"
+#BSUB -R "affinity[core(20)]"
+OMP_NUM_THREADS=4 /polusfs/lsf/openmp/launchOpenMP.py ./solver_dot 400000000 400000000 2 3 4
+
+------------------------------------------------------------
+
+Successfully completed.
+
+Resource usage summary:
+
+    CPU time :                                   116.86 sec.
+    Max Memory :                                 6109 MB
+    Average Memory :                             5345.38 MB
+    Total Requested Memory :                     -
+    Delta Memory :                               -
+    Max Swap :                                   -
+    Max Processes :                              4
+    Max Threads :                                8
+    Run time :                                   38 sec.
+    Turnaround time :                            6099 sec.
+
+The output (if any) follows:
+
+⏱️  dot executed in 1.3228s
+⏱️  dot executed in 1.32508s
+⏱️  dot executed in 1.32304s
+⏱️  dot executed in 1.32101s
+⏱️  dot executed in 1.32033s
+⏱️  dot executed in 1.32205s
+⏱️  dot executed in 1.32127s
+⏱️  dot executed in 1.32456s
+⏱️  dot executed in 1.32248s
+⏱️  dot executed in 1.32725s
+⏱️  dot executed in 1.32172s
+⏱️  dot executed in 1.31397s
+⏱️  dot executed in 1.31242s
+⏱️  dot executed in 1.31329s
+⏱️  dot executed in 1.32336s
+⏱️  dot executed in 1.32181s
+⏱️  dot executed in 1.32121s
+⏱️  dot executed in 1.3209s
+⏱️  dot executed in 1.3233s
+⏱️  dot executed in 1.31894s
+⏱️  dot full time executed in 26.4212s
+dot avg time 1.32106
+dot -1.07832e+29

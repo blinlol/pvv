@@ -1,0 +1,67 @@
+Sender: LSF System <lsfadmin@polus-c3-ib.bmc.hpc.cs.msu.ru>
+Subject: Job 1366551: <source /polusfs/setenv/setup.SMPI;#BSUB -W 0:15;#BSUB -o results/solver_spmv-8000-16;#BSUB -e results/solver_spmv-8000-16;#BSUB -m "polus-c3-ib";#BSUB -R "affinity[core(20)]";OMP_NUM_THREADS=16 /polusfs/lsf/openmp/launchOpenMP.py ./solver_spmv 8000 8000 2 3 16> in cluster <MSUCluster> Done
+
+Job <source /polusfs/setenv/setup.SMPI;#BSUB -W 0:15;#BSUB -o results/solver_spmv-8000-16;#BSUB -e results/solver_spmv-8000-16;#BSUB -m "polus-c3-ib";#BSUB -R "affinity[core(20)]";OMP_NUM_THREADS=16 /polusfs/lsf/openmp/launchOpenMP.py ./solver_spmv 8000 8000 2 3 16> was submitted from host <polus-ib.bmc.hpc.cs.msu.ru> by user <edu-cmc-pv25-528-01> in cluster <MSUCluster> at Fri Nov 28 11:35:27 2025
+Job was executed on host(s) <polus-c3-ib.bmc.hpc.cs.msu.ru>, in queue <short>, as user <edu-cmc-pv25-528-01> in cluster <MSUCluster> at Fri Nov 28 17:51:52 2025
+</home_edu/edu-cmc-pv25-528/edu-cmc-pv25-528-01> was used as the home directory.
+</home_edu/edu-cmc-pv25-528/edu-cmc-pv25-528-01/pvv/omp> was used as the working directory.
+Started at Fri Nov 28 17:51:52 2025
+Terminated at Fri Nov 28 17:54:42 2025
+Results reported at Fri Nov 28 17:54:42 2025
+
+Your job looked like:
+
+------------------------------------------------------------
+# LSBATCH: User input
+source /polusfs/setenv/setup.SMPI
+#BSUB -W 0:15
+#BSUB -o results/solver_spmv-8000-16
+#BSUB -e results/solver_spmv-8000-16
+#BSUB -m "polus-c3-ib"
+#BSUB -R "affinity[core(20)]"
+OMP_NUM_THREADS=16 /polusfs/lsf/openmp/launchOpenMP.py ./solver_spmv 8000 8000 2 3 16
+
+------------------------------------------------------------
+
+Successfully completed.
+
+Resource usage summary:
+
+    CPU time :                                   556.78 sec.
+    Max Memory :                                 11364 MB
+    Average Memory :                             10099.04 MB
+    Total Requested Memory :                     -
+    Delta Memory :                               -
+    Max Swap :                                   -
+    Max Processes :                              4
+    Max Threads :                                20
+    Run time :                                   170 sec.
+    Turnaround time :                            22755 sec.
+
+The output (if any) follows:
+
+⏱️  Ellpack executed in 145.616s
+⏱️  fill executed in 2.33599s
+⏱️  spmv executed in 0.900483s
+⏱️  spmv executed in 0.900148s
+⏱️  spmv executed in 0.900316s
+⏱️  spmv executed in 0.900508s
+⏱️  spmv executed in 0.898386s
+⏱️  spmv executed in 0.900664s
+⏱️  spmv executed in 0.905813s
+⏱️  spmv executed in 0.899745s
+⏱️  spmv executed in 0.900604s
+⏱️  spmv executed in 0.903017s
+⏱️  spmv executed in 0.903447s
+⏱️  spmv executed in 0.900008s
+⏱️  spmv executed in 0.903147s
+⏱️  spmv executed in 0.906039s
+⏱️  spmv executed in 0.901295s
+⏱️  spmv executed in 0.899207s
+⏱️  spmv executed in 0.898242s
+⏱️  spmv executed in 0.903644s
+⏱️  spmv executed in 0.904504s
+⏱️  spmv executed in 0.92104s
+⏱️  spmv full time executed in 18.0507s
+spmv avg time 0.902534
+spmv -7.64948e+07
