@@ -4,7 +4,7 @@ GENERATES=$(BIN_NAME) $(BIN_NAME)-debug solver
 INPUT?=input
 
 files=main.cpp utils.cpp
-flags=--std=c++11 -fopenmp
+flags=--std=c++11 -fopenmp -O3
 debugFlags=$(flags) -g -o0
 
 all: build run

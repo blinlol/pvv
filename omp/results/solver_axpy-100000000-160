@@ -1,13 +1,13 @@
 Sender: LSF System <lsfadmin@polus-c3-ib.bmc.hpc.cs.msu.ru>
-Subject: Job 1366616: <source /polusfs/setenv/setup.SMPI;#BSUB -W 0:15;#BSUB -o results/solver_axpy-100000000-160;#BSUB -e results/solver_axpy-100000000-160;#BSUB -m "polus-c3-ib";#BSUB -R "affinity[core(20)]";OMP_NUM_THREADS=160 /polusfs/lsf/openmp/launchOpenMP.py ./solver_axpy 100000000 100000000 2 3 160> in cluster <MSUCluster> Done
+Subject: Job 1422043: <source /polusfs/setenv/setup.SMPI;#BSUB -W 0:15;#BSUB -o results/solver_axpy-100000000-160;#BSUB -e results/solver_axpy-100000000-160;#BSUB -m "polus-c3-ib";#BSUB -R "affinity[core(20)]";OMP_NUM_THREADS=160 /polusfs/lsf/openmp/launchOpenMP.py ./solver_axpy 100000000 100000000 2 3 160> in cluster <MSUCluster> Done
 
-Job <source /polusfs/setenv/setup.SMPI;#BSUB -W 0:15;#BSUB -o results/solver_axpy-100000000-160;#BSUB -e results/solver_axpy-100000000-160;#BSUB -m "polus-c3-ib";#BSUB -R "affinity[core(20)]";OMP_NUM_THREADS=160 /polusfs/lsf/openmp/launchOpenMP.py ./solver_axpy 100000000 100000000 2 3 160> was submitted from host <polus-ib.bmc.hpc.cs.msu.ru> by user <edu-cmc-pv25-528-01> in cluster <MSUCluster> at Fri Nov 28 11:54:14 2025
-Job was executed on host(s) <polus-c3-ib.bmc.hpc.cs.msu.ru>, in queue <short>, as user <edu-cmc-pv25-528-01> in cluster <MSUCluster> at Sat Nov 29 04:32:48 2025
+Job <source /polusfs/setenv/setup.SMPI;#BSUB -W 0:15;#BSUB -o results/solver_axpy-100000000-160;#BSUB -e results/solver_axpy-100000000-160;#BSUB -m "polus-c3-ib";#BSUB -R "affinity[core(20)]";OMP_NUM_THREADS=160 /polusfs/lsf/openmp/launchOpenMP.py ./solver_axpy 100000000 100000000 2 3 160> was submitted from host <polus-ib.bmc.hpc.cs.msu.ru> by user <edu-cmc-pv25-528-01> in cluster <MSUCluster> at Sun Dec  7 21:27:29 2025
+Job was executed on host(s) <polus-c3-ib.bmc.hpc.cs.msu.ru>, in queue <short>, as user <edu-cmc-pv25-528-01> in cluster <MSUCluster> at Sun Dec  7 22:03:52 2025
 </home_edu/edu-cmc-pv25-528/edu-cmc-pv25-528-01> was used as the home directory.
 </home_edu/edu-cmc-pv25-528/edu-cmc-pv25-528-01/pvv/omp> was used as the working directory.
-Started at Sat Nov 29 04:32:48 2025
-Terminated at Sat Nov 29 04:32:53 2025
-Results reported at Sat Nov 29 04:32:53 2025
+Started at Sun Dec  7 22:03:52 2025
+Terminated at Sun Dec  7 22:03:55 2025
+Results reported at Sun Dec  7 22:03:55 2025
 
 Your job looked like:
 
@@ -27,39 +27,39 @@ Successfully completed.
 
 Resource usage summary:
 
-    CPU time :                                   151.12 sec.
-    Max Memory :                                 690 MB
-    Average Memory :                             460.33 MB
+    CPU time :                                   118.36 sec.
+    Max Memory :                                 2304 MB
+    Average Memory :                             1536.33 MB
     Total Requested Memory :                     -
     Delta Memory :                               -
     Max Swap :                                   -
     Max Processes :                              4
-    Max Threads :                                5
-    Run time :                                   6 sec.
-    Turnaround time :                            59919 sec.
+    Max Threads :                                164
+    Run time :                                   3 sec.
+    Turnaround time :                            2186 sec.
 
 The output (if any) follows:
 
-⏱️  axpy executed in 0.0529101s
-⏱️  axpy executed in 0.0469852s
-⏱️  axpy executed in 0.0468663s
-⏱️  axpy executed in 0.0467206s
-⏱️  axpy executed in 0.0468368s
-⏱️  axpy executed in 0.0470071s
-⏱️  axpy executed in 0.0468356s
-⏱️  axpy executed in 0.0466296s
-⏱️  axpy executed in 0.0467885s
-⏱️  axpy executed in 0.0467078s
-⏱️  axpy executed in 0.0467941s
-⏱️  axpy executed in 0.0467939s
-⏱️  axpy executed in 0.0468065s
-⏱️  axpy executed in 0.0466349s
-⏱️  axpy executed in 0.046757s
-⏱️  axpy executed in 0.0466875s
-⏱️  axpy executed in 0.0469085s
-⏱️  axpy executed in 0.0470561s
-⏱️  axpy executed in 0.0468645s
-⏱️  axpy executed in 0.0469428s
-⏱️  axpy full time executed in 0.943604s
-axpy avg time 0.0471802
+⏱️  axpy executed in 0.0503561s
+⏱️  axpy executed in 0.0459718s
+⏱️  axpy executed in 0.046005s
+⏱️  axpy executed in 0.0457815s
+⏱️  axpy executed in 0.0458657s
+⏱️  axpy executed in 0.0458355s
+⏱️  axpy executed in 0.0459381s
+⏱️  axpy executed in 0.0459118s
+⏱️  axpy executed in 0.0457551s
+⏱️  axpy executed in 0.0458349s
+⏱️  axpy executed in 0.0457793s
+⏱️  axpy executed in 0.0458382s
+⏱️  axpy executed in 0.0459569s
+⏱️  axpy executed in 0.0457383s
+⏱️  axpy executed in 0.0457504s
+⏱️  axpy executed in 0.0458111s
+⏱️  axpy executed in 0.0458819s
+⏱️  axpy executed in 0.0457419s
+⏱️  axpy executed in 0.0457306s
+⏱️  axpy executed in 0.0459314s
+⏱️  axpy full time executed in 0.922253s
+axpy avg time 0.0461126
 axpy 1.25279e+06

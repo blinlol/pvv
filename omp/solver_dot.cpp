@@ -76,7 +76,7 @@ int main(int argc, char *argv[]) {
     
     omp_set_num_threads(t);
 
-    const int iter = 1000;
+    const int iter = 20;
 
     test_dot(nx, iter);
 }
