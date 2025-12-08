@@ -1,0 +1,229 @@
+Sender: LSF System <lsfadmin@polus-c3-ib.bmc.hpc.cs.msu.ru>
+Subject: Job 1422899: <source /polusfs/setenv/setup.SMPI;#BSUB -W 0:15;#BSUB -o results/main-1000-160;#BSUB -e results/main-1000-160;#BSUB -m "polus-c3-ib";#BSUB -R "affinity[core(20)]";OMP_NUM_THREADS=160 /polusfs/lsf/openmp/launchOpenMP.py ./main 1000 1000 2 3 160> in cluster <MSUCluster> Done
+
+Job <source /polusfs/setenv/setup.SMPI;#BSUB -W 0:15;#BSUB -o results/main-1000-160;#BSUB -e results/main-1000-160;#BSUB -m "polus-c3-ib";#BSUB -R "affinity[core(20)]";OMP_NUM_THREADS=160 /polusfs/lsf/openmp/launchOpenMP.py ./main 1000 1000 2 3 160> was submitted from host <polus-ib.bmc.hpc.cs.msu.ru> by user <edu-cmc-pv25-528-01> in cluster <MSUCluster> at Sun Dec  7 22:40:31 2025
+Job was executed on host(s) <polus-c3-ib.bmc.hpc.cs.msu.ru>, in queue <short>, as user <edu-cmc-pv25-528-01> in cluster <MSUCluster> at Sun Dec  7 23:17:19 2025
+</home_edu/edu-cmc-pv25-528/edu-cmc-pv25-528-01> was used as the home directory.
+</home_edu/edu-cmc-pv25-528/edu-cmc-pv25-528-01/pvv/omp> was used as the working directory.
+Started at Sun Dec  7 23:17:19 2025
+Terminated at Sun Dec  7 23:17:20 2025
+Results reported at Sun Dec  7 23:17:20 2025
+
+Your job looked like:
+
+------------------------------------------------------------
+# LSBATCH: User input
+source /polusfs/setenv/setup.SMPI
+#BSUB -W 0:15
+#BSUB -o results/main-1000-160
+#BSUB -e results/main-1000-160
+#BSUB -m "polus-c3-ib"
+#BSUB -R "affinity[core(20)]"
+OMP_NUM_THREADS=160 /polusfs/lsf/openmp/launchOpenMP.py ./main 1000 1000 2 3 160
+
+------------------------------------------------------------
+
+Successfully completed.
+
+Resource usage summary:
+
+    CPU time :                                   12.92 sec.
+    Max Memory :                                 1 MB
+    Average Memory :                             1.00 MB
+    Total Requested Memory :                     -
+    Delta Memory :                               -
+    Max Swap :                                   -
+    Max Processes :                              1
+    Max Threads :                                1
+    Run time :                                   2 sec.
+    Turnaround time :                            2209 sec.
+
+The output (if any) follows:
+
+⏱️  Ellpack executed in 0.261057s
+⏱️  fill executed in 0.00696095s
+⏱️  spmvDiag executed in 0.000657182s
+⏱️  dot executed in 0.000135344s
+⏱️  spmv executed in 0.00178498s
+⏱️  dot executed in 0.000112325s
+⏱️  axpy executed in 0.000313144s
+⏱️  axpy executed in 0.00020935s
+⏱️  one_solve executed in 0.00330285s
+⏱️  spmv executed in 0.000796642s
+⏱️  dot executed in 0.00015166s
+⏱️  calcRes executed in 0.0036056s
+#1: 292.605
+⏱️  solve_loop_with_calcRes executed in 0.00853993s
+⏱️  spmvDiag executed in 0.000417642s
+⏱️  dot executed in 0.00014874s
+⏱️  axpy executed in 0.000263549s
+⏱️  spmv executed in 0.00101605s
+⏱️  dot executed in 0.000228219s
+⏱️  axpy executed in 0.000246637s
+⏱️  axpy executed in 0.000199705s
+⏱️  one_solve executed in 0.00261862s
+⏱️  spmv executed in 0.000668988s
+⏱️  dot executed in 0.000133425s
+⏱️  calcRes executed in 0.00108255s
+#2: 115.143
+⏱️  solve_loop_with_calcRes executed in 0.00380351s
+⏱️  spmvDiag executed in 0.000280738s
+⏱️  dot executed in 0.000131246s
+⏱️  axpy executed in 0.000227652s
+⏱️  spmv executed in 0.000860646s
+⏱️  dot executed in 0.000137981s
+⏱️  axpy executed in 0.000217918s
+⏱️  axpy executed in 0.000188325s
+⏱️  one_solve executed in 0.00212602s
+⏱️  spmv executed in 0.00063793s
+⏱️  dot executed in 0.00015422s
+⏱️  calcRes executed in 0.00104836s
+#3: 46.3533
+⏱️  solve_loop_with_calcRes executed in 0.00326996s
+⏱️  spmvDiag executed in 0.000288859s
+⏱️  dot executed in 0.000140682s
+⏱️  axpy executed in 0.000201538s
+⏱️  spmv executed in 0.000817399s
+⏱️  dot executed in 0.000142295s
+⏱️  axpy executed in 0.000212718s
+⏱️  axpy executed in 0.000182074s
+⏱️  one_solve executed in 0.00208981s
+⏱️  spmv executed in 0.000634845s
+⏱️  dot executed in 0.000163596s
+⏱️  calcRes executed in 0.00105511s
+#4: 18.5211
+⏱️  solve_loop_with_calcRes executed in 0.00324076s
+⏱️  spmvDiag executed in 0.000287119s
+⏱️  dot executed in 0.000143468s
+⏱️  axpy executed in 0.000212871s
+⏱️  spmv executed in 0.000847049s
+⏱️  dot executed in 0.000238739s
+⏱️  axpy executed in 0.000212934s
+⏱️  axpy executed in 0.000189137s
+⏱️  one_solve executed in 0.00220576s
+⏱️  spmv executed in 0.000648793s
+⏱️  dot executed in 0.000135288s
+⏱️  calcRes executed in 0.00105676s
+#5: 7.43519
+⏱️  solve_loop_with_calcRes executed in 0.00335307s
+⏱️  spmvDiag executed in 0.000290401s
+⏱️  dot executed in 0.000149306s
+⏱️  axpy executed in 0.000212092s
+⏱️  spmv executed in 0.000800863s
+⏱️  dot executed in 0.000164002s
+⏱️  axpy executed in 0.000222851s
+⏱️  axpy executed in 0.000190102s
+⏱️  one_solve executed in 0.00209939s
+⏱️  spmv executed in 0.000605818s
+⏱️  dot executed in 0.000126552s
+⏱️  calcRes executed in 0.00100224s
+#6: 3.0471
+⏱️  solve_loop_with_calcRes executed in 0.00319204s
+⏱️  spmvDiag executed in 0.000271812s
+⏱️  dot executed in 0.000142589s
+⏱️  axpy executed in 0.000212491s
+⏱️  spmv executed in 0.000821654s
+⏱️  dot executed in 0.000152234s
+⏱️  axpy executed in 0.000222281s
+⏱️  axpy executed in 0.000184316s
+⏱️  one_solve executed in 0.00210353s
+⏱️  spmv executed in 0.000616968s
+⏱️  dot executed in 0.000143517s
+⏱️  calcRes executed in 0.00102475s
+#7: 1.28748
+⏱️  solve_loop_with_calcRes executed in 0.00321663s
+⏱️  spmvDiag executed in 0.000279449s
+⏱️  dot executed in 0.000133965s
+⏱️  axpy executed in 0.000218343s
+⏱️  spmv executed in 0.000798989s
+⏱️  dot executed in 0.000140008s
+⏱️  axpy executed in 0.000210803s
+⏱️  axpy executed in 0.000291824s
+⏱️  one_solve executed in 0.00214821s
+⏱️  spmv executed in 0.000649054s
+⏱️  dot executed in 0.000151914s
+⏱️  calcRes executed in 0.00107054s
+#8: 0.56319
+⏱️  solve_loop_with_calcRes executed in 0.00330951s
+⏱️  spmvDiag executed in 0.000293709s
+⏱️  dot executed in 0.000147242s
+⏱️  axpy executed in 0.000212532s
+⏱️  spmv executed in 0.000807416s
+⏱️  dot executed in 0.000145063s
+⏱️  axpy executed in 0.000210367s
+⏱️  axpy executed in 0.00019725s
+⏱️  one_solve executed in 0.00207734s
+⏱️  spmv executed in 0.000593789s
+⏱️  dot executed in 0.000130054s
+⏱️  calcRes executed in 0.0009951s
+#9: 0.251998
+⏱️  solve_loop_with_calcRes executed in 0.0035736s
+⏱️  spmvDiag executed in 0.000290405s
+⏱️  dot executed in 0.000144616s
+⏱️  axpy executed in 0.000210464s
+⏱️  spmv executed in 0.000786994s
+⏱️  dot executed in 0.000143051s
+⏱️  axpy executed in 0.000218358s
+⏱️  axpy executed in 0.000194326s
+⏱️  one_solve executed in 0.00206685s
+⏱️  spmv executed in 0.000614814s
+⏱️  dot executed in 0.000152647s
+⏱️  calcRes executed in 0.00103442s
+#10: 0.115224
+⏱️  solve_loop_with_calcRes executed in 0.00319398s
+⏱️  spmvDiag executed in 0.000276495s
+⏱️  dot executed in 0.000157326s
+⏱️  axpy executed in 0.000215758s
+⏱️  spmv executed in 0.000810698s
+⏱️  dot executed in 0.000156049s
+⏱️  axpy executed in 0.000351924s
+⏱️  axpy executed in 0.000192188s
+⏱️  one_solve executed in 0.0022171s
+⏱️  spmv executed in 0.000623573s
+⏱️  dot executed in 0.000148457s
+⏱️  calcRes executed in 0.00104261s
+#11: 0.0530497
+⏱️  solve_loop_with_calcRes executed in 0.00334986s
+⏱️  spmvDiag executed in 0.000294827s
+⏱️  dot executed in 0.000140745s
+⏱️  axpy executed in 0.000214756s
+⏱️  spmv executed in 0.000816837s
+⏱️  dot executed in 0.000155807s
+⏱️  axpy executed in 0.000226285s
+⏱️  axpy executed in 0.000198215s
+⏱️  one_solve executed in 0.00212551s
+⏱️  spmv executed in 0.000628669s
+⏱️  dot executed in 0.0001445s
+⏱️  calcRes executed in 0.00103179s
+#12: 0.0241588
+⏱️  solve_loop_with_calcRes executed in 0.00324713s
+⏱️  spmvDiag executed in 0.000264954s
+⏱️  dot executed in 0.000129294s
+⏱️  axpy executed in 0.000281364s
+⏱️  spmv executed in 0.000812631s
+⏱️  dot executed in 0.00014054s
+⏱️  axpy executed in 0.000221204s
+⏱️  axpy executed in 0.000179023s
+⏱️  one_solve executed in 0.0021126s
+⏱️  spmv executed in 0.00060086s
+⏱️  dot executed in 0.000150841s
+⏱️  calcRes executed in 0.00100577s
+#13: 0.0108923
+⏱️  solve_loop_with_calcRes executed in 0.00320702s
+⏱️  spmvDiag executed in 0.00027848s
+⏱️  dot executed in 0.000148896s
+⏱️  axpy executed in 0.00020906s
+⏱️  spmv executed in 0.000789918s
+⏱️  dot executed in 0.000145614s
+⏱️  axpy executed in 0.000222247s
+⏱️  axpy executed in 0.000593498s
+⏱️  one_solve executed in 0.00244831s
+⏱️  spmv executed in 0.00065279s
+⏱️  dot executed in 0.000148922s
+⏱️  calcRes executed in 0.00107708s
+#14: 0.00487399
+⏱️  solve_loop_with_calcRes executed in 0.00361553s
+⏱️  spmv executed in 0.00115175s
+⏱️  dot executed in 0.000137404s
+⏱️  calcRes executed in 0.00144636s
+⏱️  solve executed in 0.0758012s

@@ -1,0 +1,65 @@
+Sender: LSF System <lsfadmin@polus-c3-ib.bmc.hpc.cs.msu.ru>
+Subject: Job 1422784: <source /polusfs/setenv/setup.SMPI;#BSUB -W 0:15;#BSUB -o results/solver_dot-400000000-64;#BSUB -e results/solver_dot-400000000-64;#BSUB -m "polus-c3-ib";#BSUB -R "affinity[core(20)]";OMP_NUM_THREADS=64 /polusfs/lsf/openmp/launchOpenMP.py ./solver_dot 400000000 400000000 2 3 64> in cluster <MSUCluster> Done
+
+Job <source /polusfs/setenv/setup.SMPI;#BSUB -W 0:15;#BSUB -o results/solver_dot-400000000-64;#BSUB -e results/solver_dot-400000000-64;#BSUB -m "polus-c3-ib";#BSUB -R "affinity[core(20)]";OMP_NUM_THREADS=64 /polusfs/lsf/openmp/launchOpenMP.py ./solver_dot 400000000 400000000 2 3 64> was submitted from host <polus-ib.bmc.hpc.cs.msu.ru> by user <edu-cmc-pv25-528-01> in cluster <MSUCluster> at Sun Dec  7 22:37:33 2025
+Job was executed on host(s) <polus-c3-ib.bmc.hpc.cs.msu.ru>, in queue <short>, as user <edu-cmc-pv25-528-01> in cluster <MSUCluster> at Sun Dec  7 22:41:07 2025
+</home_edu/edu-cmc-pv25-528/edu-cmc-pv25-528-01> was used as the home directory.
+</home_edu/edu-cmc-pv25-528/edu-cmc-pv25-528-01/pvv/omp> was used as the working directory.
+Started at Sun Dec  7 22:41:07 2025
+Terminated at Sun Dec  7 22:41:11 2025
+Results reported at Sun Dec  7 22:41:11 2025
+
+Your job looked like:
+
+------------------------------------------------------------
+# LSBATCH: User input
+source /polusfs/setenv/setup.SMPI
+#BSUB -W 0:15
+#BSUB -o results/solver_dot-400000000-64
+#BSUB -e results/solver_dot-400000000-64
+#BSUB -m "polus-c3-ib"
+#BSUB -R "affinity[core(20)]"
+OMP_NUM_THREADS=64 /polusfs/lsf/openmp/launchOpenMP.py ./solver_dot 400000000 400000000 2 3 64
+
+------------------------------------------------------------
+
+Successfully completed.
+
+Resource usage summary:
+
+    CPU time :                                   107.59 sec.
+    Max Memory :                                 6109 MB
+    Average Memory :                             4073.00 MB
+    Total Requested Memory :                     -
+    Delta Memory :                               -
+    Max Swap :                                   -
+    Max Processes :                              4
+    Max Threads :                                5
+    Run time :                                   5 sec.
+    Turnaround time :                            218 sec.
+
+The output (if any) follows:
+
+⏱️  dot executed in 0.135061s
+⏱️  dot executed in 0.133928s
+⏱️  dot executed in 0.134025s
+⏱️  dot executed in 0.133867s
+⏱️  dot executed in 0.134077s
+⏱️  dot executed in 0.133927s
+⏱️  dot executed in 0.133924s
+⏱️  dot executed in 0.134121s
+⏱️  dot executed in 0.134917s
+⏱️  dot executed in 0.133363s
+⏱️  dot executed in 0.124271s
+⏱️  dot executed in 0.122891s
+⏱️  dot executed in 0.118933s
+⏱️  dot executed in 0.115729s
+⏱️  dot executed in 0.109765s
+⏱️  dot executed in 0.108867s
+⏱️  dot executed in 0.102821s
+⏱️  dot executed in 0.100239s
+⏱️  dot executed in 0.0999311s
+⏱️  dot executed in 0.100395s
+⏱️  dot full time executed in 2.44571s
+dot avg time 0.122285
+dot -1.07832e+29
